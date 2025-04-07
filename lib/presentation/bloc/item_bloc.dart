@@ -51,7 +51,7 @@ class ItemBloc extends Bloc<ItemEvent, ItemState> {
   }
 
   Future<void> _onLoadMoreItems(LoadMoreItems event, Emitter<ItemState> emit) async {
-    if (!(state is ItemLoaded) || _isLoading) {
+    if (state is! ItemLoaded || _isLoading) {
       dev.log('Cannot load more - wrong state or already loading');
       return;
     }
